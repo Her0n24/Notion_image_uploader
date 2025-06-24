@@ -1,0 +1,23 @@
+### Important keys
+Tokens.py
+
+### Output files
+*.json
+*.txt
+
+### Python cache
+__pycache__/
+*.py[cod]
+
+### Jupyter Notebook checkpoints
+.ipynb_checkpoints
+### Virtual environment
+venv/
+.env
+
+### IDE specific files
+.vscode/
+.idea/
+### Logs
+*.log
+
