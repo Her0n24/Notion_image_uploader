@@ -3,7 +3,7 @@ import time
 from datetime import datetime, timedelta
 import Tokens
 
-def delete_old_blocks(page_id, notion_token, hour_limit= 23):
+def delete_old_blocks(page_id, notion_token, hour_limit= 18):
     # Calculate threshold
     threshold_time = (datetime.now() - timedelta(hours=hour_limit)).isoformat() + "Z"
     
