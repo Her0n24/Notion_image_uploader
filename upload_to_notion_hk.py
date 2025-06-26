@@ -13,7 +13,7 @@ page_id = Tokens.PAGE_ID
 # Need better algorithm to get the run number
 
 run = "12"
-today = datetime.date.today() - datetime.timedelta(days=1)
+today = datetime.date.today()
 today_str = today.strftime("%Y%m%d")
 yesterday = today - datetime.timedelta(days=1)
 yesterday_str = yesterday.strftime("%Y%m%d")
