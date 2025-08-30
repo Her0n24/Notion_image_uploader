@@ -1,6 +1,11 @@
 import json
 import requests
 import Tokens
+import logging
+logging.basicConfig(
+    level=logging.INFO,
+    datefmt= '%Y-%m-%d %H:%M:%S',
+                    )
 
 ## Append image to desired block (this could be a page,
 # or a block within a page)
@@ -41,5 +46,8 @@ def append_image_to_block(append_block_id: str, file_upload_id: str, Notion_key:
         json.dump(response_json, f, indent=4)
 
     if response.status_code != 200:
+        logging.error(
+            f"Block append failed with status code {response.status_code}: {response.text}"
+        )
         raise Exception(
             f"Block append failed with status code {response.status_code}: {response.text}")

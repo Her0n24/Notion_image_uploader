@@ -2,6 +2,11 @@ import requests
 import time
 from datetime import datetime, timedelta
 import Tokens
+import logging
+logging.basicConfig(
+    level=logging.INFO,
+    datefmt= '%Y-%m-%d %H:%M:%S',
+                    )
 
 def delete_old_blocks(page_id, notion_token, hour_limit= 18):
     # Calculate threshold
@@ -30,6 +35,6 @@ def delete_old_blocks(page_id, notion_token, hour_limit= 18):
                 del_url = f"https://api.notion.com/v1/blocks/{block_id}"
                 del_response = requests.delete(del_url, headers=headers)
                 if del_response.status_code == 200:
-                    print(f"Deleted {block_type} block: {block_id}")
+                    logging.info(f"Deleted {block_type} block: {block_id}")
                 else:
-                    print(f"Failed to delete block: {block_id}")
+                    logging.warning(f"Failed to delete block: {block_id}")

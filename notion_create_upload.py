@@ -2,6 +2,11 @@ import json
 import requests
 from datetime import datetime, timezone
 import Tokens
+import logging
+logging.basicConfig(
+    level=logging.INFO,
+    datefmt= '%Y-%m-%d %H:%M:%S',
+                    )
 
 notion_token = Tokens.NOTION_KEY
 
@@ -37,6 +42,9 @@ def create_upload_and_get_id(notion_token: str) -> str:
 
 
     if file_create_response.status_code != 200:
+        logging.error(
+            f"File creation failed with status code {file_create_response.status_code}: {file_create_response.text}"
+        )
         raise Exception(
             f"File creation failed with status code {file_create_response.status_code}: {file_create_response.text}"
         )

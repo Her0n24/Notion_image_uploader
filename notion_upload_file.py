@@ -2,6 +2,11 @@ import requests
 import json
 import datetime
 import Tokens
+import logging
+logging.basicConfig(
+    level=logging.INFO,
+    datefmt= '%Y-%m-%d %H:%M:%S',
+)
 
 def upload_file_to_notion(file_name: str, notion_token: str, file_upload_id: str) -> None:
     """
@@ -34,5 +39,8 @@ def upload_file_to_notion(file_name: str, notion_token: str, file_upload_id: str
             json.dump(response_json, f, indent=4)
 
         if response.status_code != 200:
+            logging.error(
+                f"File upload failed with status code {response.status_code}: {response.text}"
+            )
             raise Exception(
                 f"File upload failed with status code {response.status_code}: {response.text}")
