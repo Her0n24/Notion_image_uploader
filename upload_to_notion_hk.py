@@ -16,10 +16,24 @@ import os
 notion_token = Tokens.NOTION_KEY
 page_id = Tokens.PAGE_ID
 
+import argparse
+def parse_args():
+    parser = argparse.ArgumentParser(description="Notion Upload HK")
+    parser.add_argument('--date', type=str, default=None,
+                        help="Specify the date in YYYYMMDD format (default: today)")
+    return parser.parse_args()
+
+args = parse_args()
+
+if args.date:
+    today = datetime.datetime.strptime(args.date, "%Y%m%d").date()
+else:
+    today = datetime.date.today()
+
 # Need better algorithm to get the run number
 
 run = "12"
-today = datetime.date.today() #- datetime.timedelta(days=1)
+# today = datetime.date.today() #- datetime.timedelta(days=1)
 today_str = today.strftime("%Y%m%d")
 yesterday = today - datetime.timedelta(days=1)
 yesterday_str = yesterday.strftime("%Y%m%d")

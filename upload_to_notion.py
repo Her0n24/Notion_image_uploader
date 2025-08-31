@@ -17,6 +17,21 @@ logging.basicConfig(
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Afterglow')))
 import scheduled_input_rm as sirm
 
+import argparse
+def parse_args():
+    parser = argparse.ArgumentParser(description="Notion Upload")
+    parser.add_argument('--date', type=str, default=None,
+                        help="Specify the date in YYYYMMDD format (default: today)")
+    return parser.parse_args()
+
+args = parse_args()
+
+if args.date:
+    today = datetime.datetime.strptime(args.date, "%Y%m%d").date()
+else:
+    today = datetime.date.today()
+
+
 notion_token = Tokens.NOTION_KEY
 page_id = Tokens.PAGE_ID
 
@@ -24,7 +39,7 @@ page_id = Tokens.PAGE_ID
 
 run = "00"
 run = run.zfill(2)  # Ensure run is two digits
-today = datetime.date.today() #- datetime.timedelta(days=1)
+# today = datetime.date.today() #- datetime.timedelta(days=1)
 today_str = today.strftime("%Y%m%d")
 yesterday = today - datetime.timedelta(days=1)
 yesterday_str = yesterday.strftime("%Y%m%d")
