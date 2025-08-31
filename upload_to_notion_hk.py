@@ -44,7 +44,7 @@ nqob.delete_old_blocks(Tokens.PAGE_ID, Tokens.NOTION_KEY)
 
 # Posting new forecast to the page
 output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'Afterglow', 'output'))
-file_name = os.path.join(output_dir, f"{today_str}{run}0000_afterglow_dashboard_{city}_hk.png")
+file_name = os.path.join(output_dir, f"{today_str}{run}0000_afterglow_dashboard_{city}.png")
 
 file_upload_id = ncu.create_upload_and_get_id(notion_token)
 logging.info(f"File upload ID: {file_upload_id}")
@@ -52,7 +52,7 @@ nuf.upload_file_to_notion(file_name, notion_token, file_upload_id)
 
 nab.append_image_to_block(page_id, file_upload_id, notion_token)
 
-file_name = os.path.join(output_dir, f"{today_str}{run}0000-24h-AIFS_cloud_cover_{city}_hk.png")
+file_name = os.path.join(output_dir, f"{today_str}{run}0000-24h-AIFS_cloud_cover_{city}.png")
 
 file_upload_id = ncu.create_upload_and_get_id(notion_token)
 logging.info(f"File upload ID: {file_upload_id}")
@@ -61,7 +61,7 @@ nuf.upload_file_to_notion(file_name, notion_token, file_upload_id)
 
 nab.append_image_to_block(page_id, file_upload_id, notion_token)
 
-file_name = os.path.join(output_dir, f"{today_str}{run}0000-48h-AIFS_cloud_cover_{city}_hk.png")
+file_name = os.path.join(output_dir, f"{today_str}{run}0000-48h-AIFS_cloud_cover_{city}.png")
 
 file_upload_id = ncu.create_upload_and_get_id(notion_token)
 logging.info(f"File upload ID: {file_upload_id}")
